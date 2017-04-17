@@ -14,5 +14,3 @@
  -  属性名 : 小驼峰或者下划线
  -  函数名 ：下划线var_dump imagecreatetruecolor
  -  常量名 : 大写
-
-[项目地址](http://www.baidu.com)

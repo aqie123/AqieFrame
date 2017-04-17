@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+     <!-- 开启web app支持 -->
+    <meta content="yes" name="apple-touch-fullscreen"/>
+     <!-- 全屏显示 -->
+    <meta name="format-detection" content="telephone=no">
+	<title>info</title>
+	<link rel="apple-touch-icon-precomposed" href="./public/images/haoroomsicon.jpg" />
+	<link rel="apple-touch-startup-image" href="./public/images/haoroomsicon.jpg" />
+	<link rel="stylesheet" href="./public/css/style.css">
+	<link rel="stylesheet" href="./public/css/swiper.min.css">
+</head>
+<body>
+	<nav id="nav">
+		<ul class="navlist">
+			<li id="n_0"><a href="?p=home"><span></span></a></li>
+			<li id="n_1"><a href="?p=home&c=index&a=cart"><span></span></a>
+				<div class="cartnums" style='display: none'>0</div>
+			</li>
+			<li id="n_2"><a href="?p=home&c=index&a=userinfo"><span></span></a></li>
+			<li id="n_3"><a href="?p=home&c=index&a=list"><span class="active"></span></a></li>
+		</ul>
+	</nav>
+	<section class="recommendcontent">
+		<ul>
+			<li class="setyuanjiao">
+				<a href="" class='leftimages fl mt15' id="productimg">
+					<img src="./public/images/product/product1.png" alt="">
+				</a>
+				<a href="" class="productcontent fl mt15">
+					<p class="ptitle pl10">啊切啊切啊切啊切</p>
+					<p class='pdes pl10'>这里是非常重要的简介，你不要不相信，这是真的</p>
+					<p class="pprice pl10">价格：<span class='green'>￥5000</span></p>
+				</a>
+			</li>
+			<li class="buynumsli">
+				<div class="buylabel">购买数量：</div>
+				<div class="buynuminput">
+					<div class="reduce" id='reducenums'></div>
+					<input type="number" name="qty_item_1" class='itnums' value='1' id="cartnumbers"/>
+					<div class="add" id='addnums'></div>
+				</div>
+			</li>
+		</ul>
+		<div class="decorations">
+			<div class="dtitle">详细说明</div>
+			<p>从前一个阴郁的子夜，我独自沉思，慵懒疲竭， 
+				沉思许多古怪而离奇、早已被人遗忘的传闻—— 
+				当我开始打盹，几乎入睡，突然传来一阵轻擂， 
+				仿佛有人在轻轻叩击，轻轻叩击我的房门。 
+				“有人来了，”我轻声嘟喃，“正在叩击我的房门—— 
+				唯此而已，别无他般。</p>
+				<img src="./public/images/product/product1.png" />
+		</div>
+	</section>
+	<section class='addcart'>
+		<input type="button" name="" class='addcartbtn' value='加入购物车'>
+	</section>
+
+	<script src="./public/js/libs/require.js" data-main='./public/js/views/enter/mainconfig'></script>
+</body>
+</html>

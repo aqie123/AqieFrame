@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+     <!-- 开启web app支持 -->
+    <meta content="yes" name="apple-touch-fullscreen"/>
+     <!-- 全屏显示 -->
+    <meta name="format-detection" content="telephone=no">
+	<title>前台商城首页</title>
+	<link rel="apple-touch-icon-precomposed" href="./public/images/haoroomsicon.jpg" />
+	<link rel="apple-touch-startup-image" href="./public/images/haoroomsicon.jpg" />
+	<link rel="stylesheet" href="./public/css/style.css">
+	<link rel="stylesheet" href="./public/css/swiper.min.css">
+	<!--<link rel="stylesheet" type="text/css" href="css/normalize.css" />-->
+	<link rel='stylesheet' href='http://fonts.googleapis.com/icon?family=Material+Icons' type='text/css'>
+
+	<link rel="stylesheet" href="./public/css/sidenav.min.css" type="text/css">
+	<!--切换显隐-->
+	<style  type="text/css">
+		/*小于等于800px  这里换算1rem = 16px*/
+		@media only screen and (min-width:66.67em) {
+			/*1em是12px*/
+			.sidenav {
+				width:18%;
+			}
+		}
+		/*在481-800px之间*/
+		@media only screen and (min-width:40em) and (max-width:66.67em){
+			.sidenav {
+				width:40%;
+			}
+		}
+
+		.toggle {
+			/*position: absolute;*/
+			margin-top: 72px;
+			display:block;
+			height:20px;
+			line-height: 20px;
+			text-align: center;
+			width: 100%;
+			margin-bottom: 10px;
+			padding: 0;
+		}
+		.product{
+			top:0;
+		}
+		/* 设置滚动条的样式 */
+		::-webkit-scrollbar
+		{
+			width: 6px;
+		}
+		/* 滚动槽 */
+		::-webkit-scrollbar-track
+		{
+			-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+			border-radius: 5px;
+		}
+		/* 滚动条滑块 */
+		::-webkit-scrollbar-thumb
+		{ border-radius: 5px;background: rgba(0,0,0,0.1);
+			-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+		}
+		::-webkit-scrollbar-thumb:window-inactive
+		{
+			background: rgba(255,0,0,0.4);
+		}
+	</style>
+
+</head>
+<body>
+	<nav id="nav">
+		<ul class="navlist">
+			<li id="n_0"><a href="?p=home"><span class="active"></span></a></li>
+			<li id="n_1"><a href="?p=home&c=index&a=cart"><span></span></a></li>
+			<li id="n_2"><a href="?p=home&c=index&a=userinfo"><span></span></a></li>
+			<li id="n_3"><a href="?p=home&c=index&a=list"><span></span></a></li>
+		</ul>
+	</nav>
+	<section class="indexslider">
+		<div class="swiper-container" id="topSlider">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<img src="./public/images/sliderbanner/1.jpg" alt="">
+					<div class="topmask">
+						<div class="slidecontent">
+							<p>微信价 <span>100</span></p>
+							<p>欢迎品尝,首次购买不好吃不要钱欢迎品尝,首次购买不好吃不要钱</p>
+						</div>
+						<a href="#">立即购买</a>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<img src="./public/images/sliderbanner/2.jpg" alt="">
+					<div class="topmask">
+						<div class="slidecontent">
+							<p>微信价 <span>200</span></p>
+							<p>欢迎品尝,首次购买不好吃不要钱欢迎品尝,首次购买不好吃不要钱</p>
+						</div>
+						<a href="#">立即购买</a>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<img src="./public/images/sliderbanner/3.jpg" alt="">
+					<div class="topmask">
+						<div class="slidecontent">
+							<p>微信价 <span>300</span></p>
+							<p>欢迎品尝,首次购买不好吃不要钱欢迎品尝,首次购买不好吃不要钱</p>
+						</div>
+						<a href="#">立即购买</a>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<img src="./public/images/sliderbanner/4.jpg" alt="">
+					<div class="topmask">
+						<div class="slidecontent">
+							<p>微信价 <span>400</span></p>
+							<p>欢迎品尝,首次购买不好吃不要钱欢迎品尝,首次购买不好吃不要钱</p>
+						</div>
+						<a href="#">立即购买</a>
+					</div>
+				</div>
+			</div>
+			<div class="swiper-pagination"></div>
+			<div class="swiper-button-prev swiper-button-white"></div>
+    		<div class="swiper-button-next swiper-button-white"></div>
+		</div>
+	</section>
+
+	<a href="javascript:;" class="toggle" id="sidenav-toggle">
+		商品分类
+	</a>
+	<section class="product">
+		<ul>
+			<?php foreach($is_news as $is_new): ?>
+			<li>
+			  <a href="?p=home&c=index&a=detail&id=<?php echo $is_new['goods_id'];?>">
+				<div class='triangle-topleft'></div>
+				<span class="shuxing">最新</span>
+				<div class="leftimages">
+					<canvas data-src="./public/uploads/<?php echo $is_new['goods_img'];?>"></canvas>
+				</div>
+				<div class="productcontent fr">
+					<p class="ptitle pl10"><?php echo $is_new['goods_name'];?></p>
+					<p class="pdes pl10">简介: 基恩街</p>
+					<p class='pprice pl10'>价格 <span class="pprice"><?php echo $is_new['shop_price'];?></span></p>
+				</div>
+			  </a>
+			</li>
+			<?php endforeach;?>
+			<?php foreach($is_hots as $is_hot): ?>
+			<li>
+			  <a href="?p=home&c=index&a=detail&id=<?php echo $is_hot['goods_id'];?>">
+				<div class='triangle-topleft rexiao'></div>
+				<span class="shuxing">热销</span>
+				<div class="leftimages">
+					<canvas data-src="./public/uploads/<?php echo $is_host['goods_img'];?>"></canvas>
+				</div>
+				<div class="productcontent fr">
+					<p class="ptitle pl10"><?php echo $is_hot['goods_name'];?></p>
+					<p class="pdes pl10">简介: 基恩街</p>
+					<p class='pprice pl10'>价格 <span class="pprice"><?php echo $is_hot['shop_price'];?></span></p>
+				</div>
+			  </a>
+			</li>
+			<?php endforeach;?>
+			<?php foreach($is_bests as $is_best): ?>
+			<li>
+			  <a href="?p=home&c=index&a=detail&id=<?php echo $is_best['goods_id'];?>">
+				<div class='triangle-topleft xianggou'></div>
+				<span class="shuxing">享购</span>
+				<div class="leftimages">
+					<canvas data-src="./public/uploads/<?php echo $is_best['goods_img'];?>"></canvas>
+				</div>
+				<div class="productcontent fr">
+					<p class="ptitle pl10"><?php echo $is_best['goods_name'];?></p>
+					<p class="pdes pl10">简介: 基恩街</p>
+					<p class='pprice pl10'>价格 <span class="pprice"><?php echo $is_best['shop_price'];?></span></p>
+				</div>
+			  </a>
+			</li>
+			<?php endforeach;?>
+		</ul>
+	</section>
+	<style>
+		.chat{
+			padding-right: 100px;
+			font-size: 20px;
+			color: #ff0000;
+		}
+
+	</style>
+	<a href="index.php?p=home&c=chat&a=index"><span class="fr chat">加入聊天室</span></a>
+
+	<!--z左侧导航开始-->
+	<nav class="sidenav" data-sidenav data-sidenav-toggle="#sidenav-toggle">
+		<div class="sidenav-brand">
+			所有商品分类
+		</div>
+
+		<?php foreach($cats as $k => $v): ?>
+		<?php if($k<8): ?>
+		<div class="sidenav-header">
+			<?php echo $v['cat_name']; ?>  	<!--顶级分类-->
+			<small><?php echo $v['cat_desc']; ?></small>
+		</div>
+		<ul class="sidenav-menu">
+			<?php foreach($v['child'] as $v1): ?>
+			<li>
+			  <a href="javascript:;" data-sidenav-dropdown-toggle class="active">
+				  <span class="sidenav-link-icon">
+					<i class="material-icons">date_range</i><!--图标文件-->
+				  </span>
+						<span class="sidenav-link-title">
+									<?php echo $v1['cat_name']; ?> <!--二级分类-->
+						</span>
+						<span class="sidenav-dropdown-icon show" data-sidenav-dropdown-icon>
+					<i class="material-icons">arrow_drop_down</i>
+				  </span>
+				  <span class="sidenav-dropdown-icon" data-sidenav-dropdown-icon>
+					<i class="material-icons">arrow_drop_up</i>
+				  </span>
+			  </a>
+
+				<ul class="sidenav-dropdown" data-sidenav-dropdown>
+					<?php foreach($v1['child'] as $v2): ?>
+					<li>
+						<a href="javascript:;">
+							<?php echo $v2['cat_name']; ?><!--三级分类-->
+						</a>
+					</li>
+					<?php endforeach; ?>
+				</ul>
+			</li>
+			<?php endforeach; ?>
+		</ul>
+		<?php endif; ?>
+		<?php endforeach; ?>
+
+	</nav>
+
+	<script src="./public/js/libs/require.js" data-main='./public/js/views/enter/mainconfig'></script>
+	<script src="./public/js/libs/jquery-3.1.1.min.js" type="text/javascript"></script>
+	<script src="./public/js/sidenav.min.js"></script>
+	<script>$('[data-sidenav]').sidenav();</script>
+</body>
+</html>	

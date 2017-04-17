@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>啊切聊天室</title>
+    <link rel="stylesheet" type="text/css" href="./public/css/chat.css"/>
+
+</head>
+<body>
+<!--<iframe width="420" scrolling="no" height="60" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=12&icon=1&num=5" id="weather"></iframe>-->
+
+<div class="content">
+    <div class="chatBox">
+        <div class="chatLeft">
+            <!--聊天室显示区域-->
+            <div class="chat01">
+                <div class="chat01_title">
+                    <ul class="talkTo">
+                        <?php //if(empty($username)): ?>
+                        <li title="点击登录">
+                            <a href="?p=home&c=index&a=msglogin"><?php echo empty($username) ? '游客' : $username; ?>
+                            </a>
+                        </li>
+                        <?php //else :?>
+                        <!--<li><a><?php echo $username; ?></a></li>-->
+                        <?php //endif;?>
+                    </ul>
+                    <a class="close_btn" href="?p=home&c=index&a=logout" title="退出登录"></a>
+                </div>
+                <div class="chat01_content" id="showdiv">
+                    <!--留言主体内容-->
+                </div>
+            </div>
+            <!--聊天室输入区域-->
+            <form action="chatroom.html" onsubmit="return false">
+            <div class="chat02">
+                <!--输入区域头部-->
+                <div class="chat02_title">
+                    <a class="chat02_title_btn ctb01" href="javascript:;"></a>
+                    <a class="chat02_title_btn ctb02" href="javascript:;" title="选择文件">
+                    <embed width="15" height="16"
+                           flashvars="swfid=2556975203&amp;maxSumSize=50&amp;maxFileSize=50&amp;maxFileNum=1&amp;multiSelect=0&amp;uploadAPI=http%3A%2F%2Fupload.api.weibo.com%2F2%2Fmss%2Fupload.json%3Fsource%3D209678993%26tuid%3D1887188824&amp;initFun=STK.webim.ui.chatWindow.msgToolBar.upload.initFun&amp;sucFun=STK.webim.ui.chatWindow.msgToolBar.upload.sucFun&amp;errFun=STK.webim.ui.chatWindow.msgToolBar.upload.errFun&amp;beginFun=STK.webim.ui.chatWindow.msgToolBar.upload.beginFun&amp;showTipFun=STK.webim.ui.chatWindow.msgToolBar.upload.showTipFun&amp;hiddenTipFun=STK.webim.ui.chatWindow.msgToolBar.upload.hiddenTipFun&amp;areaInfo=0-16|12-16&amp;fExt=*.jpg;*.gif;*.jpeg;*.png|*&amp;fExtDec=选择图片|选择文件"
+                           data="upload.swf" wmode="transparent" bgcolor="" allowscriptaccess="always"
+                           allowfullscreen="true"
+                           scale="noScale" menu="false" type="application/x-shockwave-flash"
+                           src="http://service.weibo.com/staticjs/tools/upload.swf?v=36c9997f1313d1c4"
+                           id="swf_3140">
+
+                    </a>
+                    <a class="chat02_title_btn ctb03" href="javascript:;" title="选择附件">
+                    <embed width="15" height="16"
+                           flashvars="swfid=2556975203&amp;maxSumSize=50&amp;maxFileSize=50&amp;maxFileNum=1&amp;multiSelect=0&amp;uploadAPI=http%3A%2F%2Fupload.api.weibo.com%2F2%2Fmss%2Fupload.json%3Fsource%3D209678993%26tuid%3D1887188824&amp;initFun=STK.webim.ui.chatWindow.msgToolBar.upload.initFun&amp;sucFun=STK.webim.ui.chatWindow.msgToolBar.upload.sucFun&amp;errFun=STK.webim.ui.chatWindow.msgToolBar.upload.errFun&amp;beginFun=STK.webim.ui.chatWindow.msgToolBar.upload.beginFun&amp;showTipFun=STK.webim.ui.chatWindow.msgToolBar.upload.showTipFun&amp;hiddenTipFun=STK.webim.ui.chatWindow.msgToolBar.upload.hiddenTipFun&amp;areaInfo=0-16|12-16&amp;fExt=*.jpg;*.gif;*.jpeg;*.png|*&amp;fExtDec=选择图片|选择文件"
+                           data="upload.swf" wmode="transparent" bgcolor="" allowscriptaccess="always"
+                           allowfullscreen="true"
+                           scale="noScale" menu="false" type="application/x-shockwave-flash"
+                           src="http://service.weibo.com/staticjs/tools/upload.swf?v=36c9997f1313d1c4"
+                           id="swf_3140">
+                </a>
+                    <label class="chat02_title_t">
+                        <a>聊天记录</a></label>
+                </div>
+                <!--输入区域内容部分-->
+                <div class="chat02_content">
+                    <textarea id="textarea"  name="msg" placeholder="刘亦菲密码1,马云密码2,依此类推.点击右侧头像可以对特定人说话,点击游客可以登陆或注册"></textarea>
+                </div>
+                <div class="chat02_bar">
+                    <ul>
+                        <li style="left: 20px; top: 10px; padding-left: 30px;">来源：<a>aqie</a></li>
+                        <li style="right: 5px; top: 5px;">
+
+                            <button onclick="sendmsg()">
+                                <img src="./public/img/send_btn.jpg">
+                            </button>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+                <input type="hidden" name="receiver" value="">
+            </form>
+        </div>
+        <div class="chatRight">
+            <div class="chat03">
+                <div class="chat03_title">
+                    <label class="chat03_title_t">
+                        成员列表</label>
+                </div>
+                <div class="chat03_content">
+                    <ul>
+                        <li class='receiver'>
+                            <label class="offline">
+                            </label>
+                                <img src="./public/img/head/0.jpg">
+                                <a href="javascript:;" class="chat03_name">所有人</a>
+                        </li>
+                        <?php $num = 0; $num %= 10; ?>
+                        <?php foreach ($users as $user) :?>
+                        <li <?php if(!empty($username) && $user['user_name']==$username):?>
+                                class="choosed receiver"
+                            <?php endif;?> class='receiver'>
+                            <label class="offline">
+                            </label>
+
+                                <img src="./public/img/head/<?php echo $num;?>.jpg"></a>
+                            <a href="javascript:;" class="chat03_name">
+                                <span class="name"><?php echo $user['user_name'];?></span>
+                            </a>
+                        </li>
+                        <?php $num++; ?>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div style="clear: both;">
+        </div>
+    </div>
+</div>
+<!--<canvas id="canvas" width="100%" height="100%"></canvas>-->
+<!--
+<div class="music">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1761818&auto=0&height=66"></iframe>
+</div>
+-->
+<script type="text/javascript" src="./public/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="./public/js/ajaxget.js"></script>
+<script type="text/javascript" src="./public/js/ajaxpost.js"></script>
+<script type="text/javascript" src="./public/js/message.js"></script>
+<!--<script type="text/javascript" src="./public/js/chat.js"></script>-->
+<script src="./public/js/hovertreewelcome.js"></script>
+<!--<script src="./public/js/canvas.js"></script>-->
+<script>
+
+    /**
+     * 点击右边头像选中
+     */
+    $('li.receiver').click(function(){
+        $(this).find('.offline').addClass('online').removeClass('offline');
+        $(this).siblings().find('.online').addClass('offline');
+        // 将接受者放进隐藏域
+        var name = $(this).find('.name').html();
+        $("input[name='receiver']").val(name);
+    });
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

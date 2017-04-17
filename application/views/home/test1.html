@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>摸摸哒</title>
+	<!-- <link rel="stylesheet" href="css/style.css"> -->
+  <style type="text/css">
+    ul{width:1000px;height:100px;background:green;border:1px solid red;}     
+  </style>
+</head>
+<body>
+<section class="order_content">      
+      <div class="addresslist">               
+                <ul class=" address_item">
+                    <li class="radio"><input  checked="checked" name="address_options" value="22" type="radio"></li>
+                </ul>
+                <ul class=" address_item">
+                    <li class="radio"><input  name="address_options"  type="radio"></li>
+                </ul>              
+                <ul class="address_item new_address">
+                    <li class="radio"><input name="address_options"  id="use_new_address" value="0"  type="radio"></li>
+                </ul>              
+      </div>
+</section>
+<script src="js/libs/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+  $(".address_item").on("click",function(){
+            // $(this).children().eq(0).children().eq(0).attr('checked','checked');
+            $(this).find('input').prop('checked',true);
+            console.log($('input[name="address_options1"]:checked').val())
+  });
+
+
+
+//统计字符串出现最多字符
+var s='jhdoiweesdds';
+var fres={};    //记录所有字符串出现频率
+var mostchar= '';// 记录最大次数字符
+var key,len;
+len = s.length;
+for(var i=0;i<len;i++){
+  var char = s[i];
+  if(!fres[char]){
+    fres[char] = 0;
+  }
+  fres[char]++;
+}
+for(key in fres){
+   if(mostchar == ''||fres[key]>fres[mostchar]){
+        mostchar=key;
+    }
+}
+console.dir(fres);
+console.log(mostchar);         //字符
+console.log(fres[mostchar]);   //个数
+var n=(s.split('d')).length-1;
+document.write(n);
+</script>
+</body>
+</html>

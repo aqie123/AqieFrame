@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+	<!-- <script src="js/libs/require.min.js" data-main="main"></script> -->
+	<style>
+		.box{
+			margin: 10px auto;
+			padding:20px;
+			background-color: #635F5F;
+			color: #03AB5F;
+		}
+	</style>
+</head>
+<body>
+	<div class="box" id="box">
+		<h3>正则匹配</h3>
+		var reg = new RegExp("表达参数","附加参数");
+		g:代表全局匹配;
+		i:不区分大小写;
+		m:多行匹配;
+		\d:0-9任意数字;
+		\w:A-Z,a-z,0-9;
+		\s:空格，制表符，换页符;
+		.:除了换行符（/n）以外任意字符;
+
+		\S:匹配所有非空白字符;
+		\D:匹配所有非数字字符;
+		\W；匹配所有字母，数字，下划线以外字符;
+		\B:匹配非单词边界;
+
+		[abc]:匹配里面字符;
+		[^abc]:匹配之外的任意字符;
+		[f-k]:f-k之间字符;
+		[^A-F0-3]:匹配A-F，0-3之外任意字符;
+
+	</div>
+	
+	<script src="js/libs/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript">
+		var a=11;
+		a=a<10 ? a+'0' : a;
+		console.log(a);
+
+		/*正则表达式*/
+		/*
+		
+		*/
+		console.log("这是正则表达式测试输出")
+
+		var re = /aqie/;
+		var str = "aqie123";
+		console.log(re.test(str));
+		re = /^he/i;  //脱字符代表字符开始位置
+		str = "certainly He loves her";
+		console.log(re.test(str));		//false，因为re不在str开头
+		re = /^he$/i;				//$代表字符结尾位置
+		str = "He is a good boy";
+		console.log(re.test(str));    //因为不在结尾
+
+		console.log("下面很强大");
+		re = /\s/;			//匹配空格字符，换页符？
+		str = " aqie";
+		console.log(re.test(str));
+		re = /^[a-z]/i;		//变量名必须是字母开头
+		str = "original123";
+		console.log(re.test(str));
+
+		re = /('|")(.*)(\?)/;			//????????
+		str = 'hello world';
+		console.log(re.test(str));   	//false
+
+		re = /^[a-z]+\s+\d+$/i;		//+表示至少出现一次（有空格，有数字，字母开头）
+		str = "aqieversion 8";
+		console.log(re.test(str));
+		console.log(re.exec(str));  //返回数组类型
+		console.log(re.exec(str)[0]);  //取得版本号
+		re = /\d+/;
+		console.log(re.exec(str)[0])  //取得数字
+
+		//exec返回数组第一到n元素中包含的是匹配中出现的任意一个子匹配
+		re = /^[a-z]+\s+(\d+)$/i;  //用()创建子匹配
+		console.log(re.exec(str)[0]);  //完整匹配
+		console.log(re.exec(str)[1]);  //第一个子匹配
+
+		str = "aqieversion 8.01";
+		re = /^[a-z]+\s+(\d)\.(\d+)$/i;  //.是元字符，需要转译
+		console.log(re.exec(str)[2]);  //取出次版本号
+
+
+		//replace,用于替换字符串
+		console.log(str.replace("aqieversion","aqie"));
+		//replace 第一个可以是正则表达式
+		console.log(str.replace(/\s/,"-"));
+		str = 'some some	 \tsome\t\f';
+		re = /\s+/g;
+		console.log(str.replace(re,"&"));
+		str = 'a-bd-c';
+		console.log(str.split('-'));	//返回数组
+
+		str = 'a_bc_d-e';
+		re = /[^a-z]/i;   //^在[]里面表示负字符集
+		console.log(str.split(re));		//split也可以用正则表达式
+
+		str = 'My age is 18 ....Golden age!'; 
+		re = /\d+/;
+		console.log(str.search(re)); 	//返回数字起始坐标
+
+		str = 'My Name is Dj aqie,Hello Everyone';
+		re =/[A-Z]/g;
+		console.log(str.match(re));		//返回数组
+
+		re = /\b[a-z]*\b/gi;		//\b表示单词边界
+		str = 'one teo three- four #shh6 90';
+		console.log(str.match(re));
+
+		re = /[a-z]/i;
+		console.log(re.source);		//输出正则表达式内容
+
+		re = /A-Z/;
+		str = 'H2llo  ,Word!!!';
+		console.log(re.exec(str));		//null????
+		console.log(re.lastIndex);		//0，因为没有设置全局标志
+		re = /[A-Z]/g;
+		re.exec(str);    				//??????
+		console.log(re.lastIndex);		//1
+		re.exec(str);    				//??????
+		console.log(re.lastIndex);		//9
+
+		re = /A-Z/;
+		re.exec(str);
+		console.log(RegExp.input);      //这是什么
+		re.exec('tempstr');
+		console.log(RegExp.input);     //因为temostr不匹配
+
+		//lastMatch 最后匹配的字符
+		re = /[a-z]/g;
+		str = 'aqie hi';
+		re.test(str);
+		console.log(RegExp.lastMatch);
+		re.test(str);
+		console.log(RegExp['$&']);
+
+		//lastParen 最后匹配的分组
+		re =/[a-z](\d)/gi;
+		str = 'Coass1 Class2 Class3';
+		re.test(str);
+		console.log(RegExp.lastParen);  //1
+		re.test(str);
+		console.log(RegExp['$+']);	//2
+
+		re = /[A-Z]/g;
+		str = '123ABC345';
+		re.test(str);
+		console.log(RegExp.leftContext);	//123
+		console.log(RegExp.rightContext);
+		re.test(str);
+		console.log(RegExp["$`"]);
+		console.log(RegExp["$'"]);
+
+
+		str = '\?';
+		console.log(str);
+		re = /\?/;
+		console.log(re.test(str));	//true
+		re = new RegExp("\\?");		//正确写法
+		console.log(re.test(str));
+
+		//ASCII方式用十六进制表示特殊字符
+		re = /^\x43\x4A$/;  
+		console.log(re.test('CJ'));
+
+
+		/*文字自动换行*/
+		window.onload = function(){
+			var box = document.getElementById('box');
+			var text = box.innerHTML;
+			text = text.replace(/;/g,";<br />");
+			box.innerHTML= text;
+		}
+
+		/*$(function(){
+			var box= $('.box');
+			var temp = box.html();		
+			temp = temp.replace(/;/g,";<br />");
+			box.html(temp);
+		})*/
+
+
+		// slice splice
+		// 截取网址后面id
+		var str = "www.baidu.com?id=4";
+		str = str.split("?id=");
+		alert(str[1]);
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>摸摸哒</title>
+  <style type="text/css"> 
+  *{margin:0;padding:0;}
+  
+  /*
+    .test,.test2,.test1,.test3{
+      width:100px;
+      height:100px;
+      background: red;
+      border:1px solid;
+    } 
+    .test{
+      position:absolute;
+      top:0;
+      left:0;
+      background: green;
+    }
+    .test1{
+      position: relative;
+      margin-left:-20px;
+      margin-top:-10px;
+
+    }
+    .test2{
+      background-color: yellow;
+      position: relative;
+      top:-10px;
+      left:10px;
+    }*/
+    html{font-size: 20px}  /*1rem=20px*/
+    .box{   
+      width:5rem;       /*100px*/
+      height: 5rem;
+      position: relative;
+      margin:0 auto;
+      background: green;
+    }  
+    .img{
+      width:5rem;
+      height: 5rem;
+      background: red;
+    }
+    .text{
+      position: absolute;
+      width:5rem;
+      bottom:0.5rem;
+      font-size: 12px;
+      left:0;
+      text-align: center;    
+    }
+  </style>
+</head>
+<body>
+<div class="box">
+  <div class="img"></div>
+  <div class="text">我是文字</div>
+</div>
+<div class="test">0</div>
+<div class="test1">1</div>
+<div class="test2">2</div>
+<div class="test3">3</div>
+<button type="button" class='btn'>a</button>
+<button type="button" class='btn'>a</button>
+
+
+<script type="text/javascript">
+var btn =document.getElementsByClassName('btn');
+var arr= ['a','b','c','d'];
+var i=j=0;
+function count(num,n){
+    num.onclick=function(){
+    n++;
+    n=n%4;
+    this.innerHTML=arr[n];
+  }
+}
+ count(btn[0],i);
+ count(btn[1],j);
+</script>
+
+</body>
+</html>

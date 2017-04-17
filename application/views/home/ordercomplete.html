@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+     <!-- 开启web app支持 -->
+    <meta content="yes" name="apple-touch-fullscreen"/>
+     <!-- 全屏显示 -->
+    <meta name="format-detection" content="telephone=no">
+	<title>4complete</title>
+	<link rel="apple-touch-icon-precomposed" href="./public/images/haoroomsicon.jpg" />
+	<link rel="apple-touch-startup-image" href="./public/images/haoroomsicon.jpg" />
+	<link rel="stylesheet" href="./public/css/style.css">
+	<link rel="stylesheet" href="./public/css/swiper.min.css">
+</head>
+<body>
+	<nav id="nav">
+		<ul class="navlist">
+			<li id="n_0"><a href="?p=home"><span></span></a></li>
+			<li id="n_1"><a href="?p=home&c=index&a=cart"><span></span></a>
+				<div class="cartnums" style='display: none'>0</div>
+			</li>
+			<li id="n_2"><a href="?p=home&c=index&a=userinfo"><span class="active"></span></a></li>
+			<li id="n_3"><a href="?p=home&c=index&a=list"><span></span></a></li>
+		</ul>
+	</nav>
+	<section class="myorder">
+		<div class="topcenter">
+			<div class="userhead"><img src="./public/images/morenhead.jpg" alt=""></div>
+			<div class="nipic"><p>啊切</p><p class="dingd">我的订单</p></div>
+		</div>
+		<ul class="buyer_stat">
+			<li class="btn_1"><a href="?p=home&c=index&a=obligation">待付款</a><span>待付款</span></li>
+			<li class="btn_2"><a href="?p=home&c=index&a=backorders">待发货</a><span>待发货</span></li>
+			<li class="btn_3"><a href="?p=home&c=index&a=recipt">待收货</a><span>待收货</span></li>
+			<li class="btn_4 active"><a href="?p=home&c=index&a=complete">已完成</a><span>已完成</span></li>
+		</ul>
+		<div class="public">
+			<div class="null_order" style="display: none;">
+				<div class="order_pic"></div>
+				<h4>亲，目前还没有订单</h4>
+			</div>
+			<div class="order_form">
+				<p class="num">201701060148251527</p>
+				<div class="con">
+					<p class="ware_pic"><a href="#"><img src="./public/images/product/product1.png" height="60" width="60"></a></p>
+					<p class="ware_text"><a href="#">广联达算量软件</a><br><span class="attr"></span></p>
+		            <p class="price">价格: <span>¥200.00</span></p>
+		            <p class="amount">数量: <span>3</span></p>
+				</div>
+				<div class="con">
+					<p class="ware_pic"><a href="#"><img src="./public/images/product/product1.png" height="60" width="60"></a></p>
+					<p class="ware_text"><a href="#">广联达算量软件</a><br><span class="attr"></span></p>
+		            <p class="price">价格: <span>¥200.00</span></p>
+		            <p class="amount">数量: <span>2</span></p>
+				</div>
+				<div class="con">
+					<p class="ware_pic"><a href="#"><img src="./public/images/product/product1.png" height="60" width="60"></a></p>
+					<p class="ware_text"><a href="#">广联达算量软件</a><br><span class="attr"></span></p>
+		            <p class="price">价格: <span>¥200.00</span></p>
+		            <p class="amount">数量: <span>1</span></p>
+				</div>
+				<div class="clear"></div>
+				<div class="foot">
+					<p class="time">添加时间:2017-01-06 10:22:45</p>
+					<div class="handle">
+						<div style="float:left;">
+	                		订单总价: <b >¥1200.00&nbsp;&nbsp;</b>
+	              		</div>
+	              		<!--待付款 -->
+				        <a href="#"  class="btn red">付款</a>
+				        <!-- <a href="#" class="order_action_cancel"> 取消订单</a> -->
+				        <a href="order_detail.html">查看订单</a>
+				    </div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+	<script src="./public/js/libs/require.js" data-main='./public/js/views/enter/mainconfig'></script>
+</body>
+</html>

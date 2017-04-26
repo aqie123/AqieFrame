@@ -6,6 +6,6 @@
  */
 class GoodsModel extends Model
 {
-    // 获取推荐商品
+
 
 }

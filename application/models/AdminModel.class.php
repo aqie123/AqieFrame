@@ -7,6 +7,7 @@
  */
 class AdminModel extends Model
 {
+
     // 获取所有管理员  (测试)
     public function getAdmins()
     {

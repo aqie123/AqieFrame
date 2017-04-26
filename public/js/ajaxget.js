@@ -6,10 +6,10 @@ function ajaxget(url,success){
                  // console.log(xhr.responseText);       //   一直在请求数据。没有新数据写入，这里拿到是空
                 // 字符串转换成对象
                 if(xhr.responseText){
-                    // console.log(xhr.responseText);          // 从数据库读取到数据
+                    console.log(xhr.responseText);          // 从数据库读取到数据
                     //eval("var data=" + xhr.responseText);       // data 是对象
-                    data = JSON.parse(xhr.responseText);
-                     // console.log(data);           // 获取服务器响应数据
+                    var data = JSON.parse(xhr.responseText);
+                     console.log(data);           // 获取服务器响应数据
                     // console.log(data[0]['add_time']);        拿到指定数据
                     success(data);
                     for(var i=0;i<data.length;++i){

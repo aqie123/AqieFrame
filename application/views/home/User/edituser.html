@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<form>
+    <?php //var_dump($this->view[0]['data']); ?>
+    <?php echo $_GET['id']; ?>
+    <h1>修改用户信息</h1>
+    <input type="hidden" value="<?php echo $_GET['id']; ?>" name="id">
+    年龄： <input type="text" name="age" value="<?php echo $this->view[0]['data']['age']; ?>"><br>
+    学历： <select name="edu" id="">
+    <option value="1" <?php if($this->view[0]['data']['edu']=='小学') {echo "selected"; }?>>小学</option>
+    <option value="2" <?php if($this->view[0]['data']['edu']=='中学') {echo "selected" ; }?>>中学</option>
+    <option value="3" <?php if($this->view[0]['data']['edu']=='大学') {echo "selected" ; }?>>大学</option>
+    <option value="4" <?php if($this->view[0]['data']['edu']=='硕士') {echo "selected" ; }?>>硕士</option>
+    <option value="5" <?php if($this->view[0]['data']['edu']=='博士') {echo "selected" ; }?>>博士</option>
+</select><br>
+    兴趣爱好:
+    <?php $hobby = explode(",",$this->view[0]['data']['hobby']);?>
+    <input type="checkbox" name="hobby[]" value="1" <?php if(in_array('排球',$hobby)) {echo "checked" ; }?>>排球
+    <input type="checkbox" name="hobby[]" value="2" <?php if(in_array('篮球',$hobby)) {echo "checked" ; }?>>篮球
+    <input type="checkbox" name="hobby[]" value="4" <?php if(in_array('足球',$hobby)) {echo "checked" ; }?>>足球
+    <input type="checkbox" name="hobby[]" value="8" <?php if(in_array('橄榄球',$hobby)) {echo "checked" ; }?>>橄榄球
+    <input type="checkbox" name="hobby[]" value="16" <?php if(in_array('棒球',$hobby)) {echo "checked" ; }?>>棒球
+    <input type="checkbox" name="hobby[]" value="32" <?php if(in_array('乒乓球',$hobby)) {echo "checked" ; }?>>乒乓球
+    <br>来自：
+    <input type="radio" name="area" value="1" <?php if($this->view[0]['data']['area']=='东北') {echo "checked" ; }?>>东北
+    <input type="radio" name="area" value="2" <?php if($this->view[0]['data']['area']=='华北') {echo "checked" ; }?>>华北
+    <input type="radio" name="area" value="3" <?php if($this->view[0]['data']['area']=='西北') {echo "checked" ; }?>>西北
+    <input type="radio" name="area" value="4" <?php if($this->view[0]['data']['area']=='华东') {echo "checked" ; }?>>华东
+    <input type="radio" name="area" value="5" <?php if($this->view[0]['data']['area']=='华南') {echo "checked" ; }?>>华南
+    <input type="radio" name="area" value="6" <?php if($this->view[0]['data']['area']=='华西') {echo "checked" ; }?>>华西
+    <input type="hidden" name="code" value="">
+    <br><input type="submit" value="修改详细信息">
+</form>
+
+
+    <script src="./public/js/ajaxpost.js"></script>
+    <script>
+        var edit = document.getElementsByTagName('form')[0];
+        ajax(edit,'?p=home&c=user&a=updateuser',function (data) {
+            //location.reload();
+            alert(data.message);
+            window.location.href="?p=home&c=user&a=userlist";
+        },function(data){
+            alert(data.message);
+        });
+    </script>
+</body>
+</html>

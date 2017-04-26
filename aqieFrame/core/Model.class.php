@@ -22,7 +22,7 @@ class Model
         //调用getFields字段方法
         $this->getFields();
     }
-
+    private function __clone(){}
     /**
      * 获取表字段列表
      */
@@ -84,11 +84,11 @@ class Model
 
     }
 
-
-    /**
-     * 查询表中所有数据
-     * @param string (有查询条件获取所有数据)
-     * @return array  (二维数组) both
+    /**查询表中所有数据
+     * @param string $where
+     * @param int $fetchstyle
+     * @param string $fields (有查询条件获取所有数据)
+     * @return array (二维数组) both
      */
     public function showAll($where='',$fetchstyle=PDO::FETCH_BOTH,$fields="*")
     {
@@ -119,7 +119,6 @@ class Model
         if(empty($where) && $order==0 && !empty($orderby) ){   // 提供排序条件,正序排列
             $sql = "select * from {$this->table} order by $orderby limit $offset,$pagesize";
         }elseif(empty($where) && $order==1 && !empty($orderby) ) {  // 提供排序条件和排序顺序(常用)
-            // $brands = $brandModel->showAllByPage($pagesize,'brand_id',1);
             $sql = "select * from {$this->table}  order by $orderby desc limit $offset, $pagesize ";
         }elseif(!empty($where) &&$order==1 && !empty($orderby) ){  // 四个参数都提供了，按查询条件倒序
             $sql = "select * from {$this->table}  where $where order by $orderby  desc limit $offset, $pagesize";

@@ -16,9 +16,9 @@ function ajax(form,url,success,fail){
                        // alert(xhr.responseText);             //正常
                        console.log(xhr.responseText);       // 正常
                 // 字符串转换成对象
-                data = JSON.parse(xhr.responseText);
+                var data = JSON.parse(xhr.responseText);
                 //eval("var data=" + xhr.responseText);
-                // console.log(data);
+                console.log(data);
                 // alert(data.message);
                 if(data.status){		// 值为1，表示成功
                     success(data);
@@ -38,15 +38,15 @@ function ajax(form,url,success,fail){
 function ajax2(form,url,success,fail){
         //1.收集用户输入表单信息
         var formData = new FormData(form);
-        // console.log(formData);
+        console.log(formData);
         //2.信息提交给服务器端
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function(){
             if(xhr.readyState === 4 && xhr.status === 200){
-                // console.log(xhr.responseText);       // 正常
+                console.log(xhr.responseText);       // 正常
                 // 字符串转换成对象
                 // xhr.responseText['message'])    这个是字符串大哥
-                data = JSON.parse(xhr.responseText);
+                var data = JSON.parse(xhr.responseText);
                 //eval("var data=" + xhr.responseText);
                 console.log(data);
                 // alert(data.message);
@@ -60,4 +60,26 @@ function ajax2(form,url,success,fail){
         };
         xhr.open('post',url);
         xhr.send(formData);
+}
+
+function ajax3(data,url,success,fail){
+    //2.信息提交给服务器端
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4){
+            if( xhr.status === 200){
+                var data = JSON.parse(xhr.responseText);
+                if(data.status){		// 值为1，表示成功
+                    success(data);
+                }else{
+                    fail(data);
+                }
+
+            }
+        }
+    };
+    xhr.open('post',url);
+    // 数据组值为xml格式传递过去
+    xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+    xhr.send(data);
 }

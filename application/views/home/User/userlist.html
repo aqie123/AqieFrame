@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>前台用户列表</title>
+    <style>
+        table{
+            border: #36f5ff;
+        }
+    </style>
+</head>
+<body>
+<form action="">
+    <h1>添加数据</h1>
+    <h4>这里没有做用户列表，所以添加详细信息需要在页面改id</h4>
+    <h4>主要测试mvc实现原生ajax增删改查</h4>
+    用户名： <input type="text" readonly  value="admin"/><br>
+    用户id： <input type="text" readonly  name="user_id" value="8"/><br>
+    年龄： <input type="text" name="age"><br>
+    学历： <select name="edu" id="">
+    <option value="1">小学</option>
+    <option value="2">中学</option>
+    <option value="3">大学</option>
+    <option value="4">硕士</option>
+    <option value="5">博士</option>
+</select><br>
+    兴趣爱好:
+    <input type="checkbox" name="hobby[]" value="1">排球
+    <input type="checkbox" name="hobby[]" value="2">篮球
+    <input type="checkbox" name="hobby[]" value="4">足球
+    <input type="checkbox" name="hobby[]" value="8">橄榄球
+    <input type="checkbox" name="hobby[]" value="16">棒球
+    <input type="checkbox" name="hobby[]" value="32">乒乓球
+    <br>来自：
+    <input type="radio" name="area" value="1">东北
+    <input type="radio" name="area" value="2">华北
+    <input type="radio" name="area" value="3">西北
+    <input type="radio" name="area" value="4">华东
+    <input type="radio" name="area" value="5">华南
+    <input type="radio" name="area" value="6">华西
+    <input type="hidden"  value="<?php echo $this->view[0]['token']?>">
+    <br><input type="submit" value="提交">
+</form>
+
+<table border="1px" cellspacing="0">
+    <tr>
+        <th>用户ID</th>
+        <th>姓名</th>
+        <th>邮箱</th>
+        <th>IP</th>
+        <th>注册时间</th>
+        <th>年龄</th>
+        <th>教育程度</th>
+        <th>爱好</th>
+        <th>地区</th>
+        <th colspan="2">操作</th>
+    </tr>
+    <?php foreach($this->view['1']['datas'] as $data):?>
+    <tr>
+        <td><?php echo $data['user_id'];?></td>
+        <td><?php echo $data['user_name'];?></td>
+        <td><?php echo $data['email'];?></td>
+        <td><?php echo long2ip($data['user_ip']);?></td>
+        <td><?php echo date("Y-m-d H:i:s",$data['reg_time']);?></td>
+        <td><?php echo $data['age'];?></td>
+        <td><?php echo $data['edu'];?></td>
+        <td><?php echo $data['hobby'];?></td>
+        <td><?php echo $data['area'];?></td>
+        <td>
+            <a href="javascript:" onclick='del("<?php echo $data['user_id'];?>")'>删除</a>
+            <a href="?p=home&c=user&a=edituser&id=<?php echo $data['user_id'];?>">编辑</a>
+        </td>
+        <!--?p=home&c=user&a=deluser&id=<?php echo $data['user_id'];?>-->
+    </tr>
+    <?php endforeach;?>
+</table>
+
+<script src="./public/js/ajaxpost.js"></script>
+<script>
+    // 删除用户及其详细信息
+    function del(id){
+        if(window.confirm("确认要删除吗")){
+            // alert(id);
+            ajax2(detail,'?p=home&c=user&a=deluser&id='+id,function (data) {
+                alert(data.message);
+                location.reload();
+            },function(data){
+                alert(data.message);
+            });
+        }else{
+
+        }
+    }
+
+    // 展示用户所有信息
+    var detail = document.getElementsByTagName('form')[0];
+    ajax(detail,'?p=home&c=user&a=userdetail',function (data) {
+        location.reload();
+        alert(data.message);
+    },function(data){
+        alert(data.message);
+    });
+</script>
+</body>
+</html>

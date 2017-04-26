@@ -27,10 +27,10 @@ class ChatController extends Controller {
         $messagemodel = new MessageModel('message');
         $res = $messagemodel->showAll("id>'{$maxId}'",PDO::FETCH_ASSOC);
         // 将二维数组信息，通过json格式提供
-       // $res = json_encode($res);
-//        这里放弃使用message函数
+        // $res = json_encode($res);
+        //  这里放弃使用message函数
         if($res){
-             //var_dump($res);die;
+            // var_dump($res);die;
             echo json_encode($res);
         }
 

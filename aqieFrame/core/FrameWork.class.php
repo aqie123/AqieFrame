@@ -62,7 +62,7 @@ class FrameWork
 
     }
     // 实现控制器和数据库模型加载
-    // AqieController AqeiModel
+    // AqieController AqieModel
     private static function load($classname)
     {
         if(substr($classname,-10) == "Controller"){

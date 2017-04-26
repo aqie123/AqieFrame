@@ -6,6 +6,8 @@ class GoodsController extends BaseController
     {
         // 获取所有商品
         $goodsModel = new GoodsModel('goods');
+        //echo "<pre>";
+        //var_dump($goodsModel);
         $pagesize = 5;
         // 当前页
         $current = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -20,10 +22,11 @@ class GoodsController extends BaseController
 
         // 分页获取所有商品分类
         $categoryModel = new CategoryModel('category');
+         //var_dump($categoryModel);
         $cats = $categoryModel->showAll();                 // 调用父类model里面方法
         $cats = $categoryModel->tree($cats);
         // 获取所有品牌
-        $brandModel = new BrandModel('brand');
+        $brandModel = new GoodsModel('brand');
         $brands = $brandModel->showAll();
         include CUR_VIEW_PATH . "goods_list.html";
     }
@@ -32,7 +35,7 @@ class GoodsController extends BaseController
     public function addAction()
     {
         // 1.获取所有商品分类
-        $categoryModel = new CategoryModel('category');
+        $categoryModel =  new CategoryModel('category');
         $cates = $categoryModel->showAll();
         $cates = $categoryModel->tree($cates);      // 这里无限分类要拿到tree 函数重新排序的数据
         // 2.获取所有品牌
@@ -47,13 +50,6 @@ class GoodsController extends BaseController
     }
 
     // 添加商品信息
-    public function insert22Action()
-    {
-        // 1.收集表单数据
-        // 2.表单数据验证处理
-        // 3.调用模型完成(商品插入)(属性数据)()
-
-    }
     public function insertAction(){
         //1.收集表单数据
         $data['goods_name'] = trim($_POST['goods_name']);

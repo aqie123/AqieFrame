@@ -1,7 +1,43 @@
 <component name="ProjectDictionaryState">
   <dictionary name="Administrator">
     <words>
+      <w>aqieframe</w>
+      <w>aqieplay</w>
+      <w>arrlen</w>
+      <w>arsort</w>
+      <w>asort</w>
+      <w>baidu</w>
+      <w>callstatic</w>
+      <w>catid</w>
+      <w>checklogin</w>
+      <w>classname</w>
+      <w>datas</w>
+      <w>dbname</w>
+      <w>deluser</w>
+      <w>filelist</w>
+      <w>imagecreatetruecolor</w>
+      <w>instanceof</w>
+      <w>isset</w>
+      <w>krsort</w>
+      <w>ksort</w>
+      <w>msglogin</w>
+      <w>newfile</w>
       <w>onreadystatechange</w>
+      <w>onsubmit</w>
+      <w>orderby</w>
+      <w>pagesize</w>
+      <w>parentid</w>
+      <w>referencefunction</w>
+      <w>rsort</w>
+      <w>specialeffects</w>
+      <w>stringconversion</w>
+      <w>totalprice</w>
+      <w>unserialize</w>
+      <w>unshift</w>
+      <w>userdetail</w>
+      <w>userlist</w>
+      <w>usort</w>
+      <w>wakeup</w>
     </words>
   </dictionary>
 </component>

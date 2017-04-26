@@ -33,4 +33,5 @@ class CategoryModel extends Model
         $cats = $this->showAll("",PDO::FETCH_ASSOC);
         return $this->tree2($cats);
     }
+
 }

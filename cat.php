@@ -1,4 +1,5 @@
 <?php
+echo '这是无限分类页面';
 $cat = array(
 	array('cat_id'=>1,'cat_name'=>'男女服装','parent_id'=>0),
 	array('cat_id'=>2,'cat_name'=>'家用电器','parent_id'=>0),

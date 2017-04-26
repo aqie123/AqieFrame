@@ -37,43 +37,33 @@ class Controller
         echo $arr;
     }
 
+
     /**
-     * 向页面传参
+     * @param $array
+     * @return null
      */
     public function assign($array){
-        /*
-        $argv=func_get_args();
-        $v=&$argv[0];
-        $len=count($argv);
-        for($i=1;$i<$len;$i++){
-            $k=$argv[$i];
-            $argv[] = array($k=>$v[$k]);
-//            echo '变量名:'.$k.', '.$v[$k].'<br>';
-        }
-        return $argv;
-        */
-        $this->view=$array;
+        $this->view[]=$array;
         return $this->view;
     }
-
     /**
      *加载模板页面
      */
     protected $view   =  null;
     public function aqieplay(){
         $backtrace = debug_backtrace();
-        array_shift($backtrace);
-//            echo "<pre>";
-        $str =  $backtrace[0]["function"];
+        // 获取控制器类名
+        $ctr = $backtrace[0]['file'];
+        $ctr = substr($ctr,0,strlen($ctr)-20);
+        $ctr = strrchr($ctr,"\\");
+        $ctr = str_replace("\\","",$ctr);
+
+        // 获取方法名
+        $str =  $backtrace[1]["function"];
         $str = substr($str,0,strlen($str)-6);
-//        echo $str;
-//        $argv=func_get_args();
-        print_r($this->view);
-        $arr = $this->view;
-//        foreach ($this->view as $k=>$v){
-//            $k = $v;
-//        }
-        include CUR_VIEW_PATH .$str.".html";
+        $path = CUR_VIEW_PATH .$ctr.DS.$str;
+        // var_dump($path);die;  // F:\AqieFrame\application\Views\home\Arithmetic\index
+        include $path.".html";
     }
 
     /**

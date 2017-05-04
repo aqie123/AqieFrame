@@ -72,7 +72,6 @@ class UserController extends  Controller{
         if ($res) {
             //登录成功,保存登录标识符到session
             $_SESSION['user'] = $res;
-            // var_dump($_SESSION['admin']['user_name']);die;       // 显示用户名
             // 登陆成功
             $this->message(array('message'=>"{$_SESSION['user']['user_name']}登录成功",'status'=>1));
             die;

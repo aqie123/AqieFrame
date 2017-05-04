@@ -21,6 +21,13 @@
 2. home/function   控制器继承了部分常用函数
 3. function.php   包含了常见php函数用法
 4. 用法
+    a.辅助函数
+        aqieplay();  home/控制器/方法名.html  保证方法名和目录下文件名一直
+        assign(['name'=> $name]);    向页面传参(变量，数组)  view层： $this->view[0]['name];
+        message(); 用于ajax将数组转换为json格式
+        jump();   跳转提示
+     b.路径
+        http://aqieframe.com/index.php?p=admin&c=index&a=index   
 
 
 ## 集成了

@@ -39,6 +39,7 @@ class FrameWork
         // 强制载入核心类
         include CORE_PATH . "Controller.class.php";
         include CORE_PATH . "Model.class.php";
+
         // 开启session
          session_start();
     }

@@ -19,6 +19,7 @@
     查找函数：in_array,array_key_exists,array_search
     其他函数： count,array_reverse,array_merge,array_sum,array_keys,
                 array_values,array_map,array_walk,range
+
 -------------------------2.字符串------------------------------------------------
     字符串去除和填充：
     trim,ltrim,rtrim,

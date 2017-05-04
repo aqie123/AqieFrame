@@ -51,17 +51,24 @@ class Controller
      */
     protected $view   =  null;
     public function aqieplay(){
-        $backtrace = debug_backtrace();
+
         // 获取控制器类名
+        /*
+        $backtrace = debug_backtrace();
         $ctr = $backtrace[0]['file'];
         $ctr = substr($ctr,0,strlen($ctr)-20);
         $ctr = strrchr($ctr,"\\");
         $ctr = str_replace("\\","",$ctr);
+        */
 
+        $ctr = strtolower(CONTROLLER);    // 当前控制器
+        $act = strtolower(ACTION);        // 当前方法名
         // 获取方法名
+        /*
         $str =  $backtrace[1]["function"];
         $str = substr($str,0,strlen($str)-6);
-        $path = CUR_VIEW_PATH .$ctr.DS.$str;
+        */
+        $path = CUR_VIEW_PATH .$ctr.DS.$act;
         // var_dump($path);die;  // F:\AqieFrame\application\Views\home\Arithmetic\index
         include $path.".html";
     }

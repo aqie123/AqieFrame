@@ -20,6 +20,7 @@
       <w>isset</w>
       <w>krsort</w>
       <w>ksort</w>
+      <w>lnmp</w>
       <w>msglogin</w>
       <w>newfile</w>
       <w>onreadystatechange</w>
@@ -29,6 +30,8 @@
       <w>parentid</w>
       <w>referencefunction</w>
       <w>rsort</w>
+      <w>sessionid</w>
+      <w>setcookie</w>
       <w>specialeffects</w>
       <w>stringconversion</w>
       <w>totalprice</w>

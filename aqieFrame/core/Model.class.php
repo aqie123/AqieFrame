@@ -21,6 +21,8 @@ class Model
 
         //调用getFields字段方法
         $this->getFields();
+
+
     }
     private function __clone(){}
     /**
@@ -294,5 +296,6 @@ class Model
         return $res;
 
     }
+    
 
 }

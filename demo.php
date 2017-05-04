@@ -502,3 +502,10 @@ class Bd{
     }
 }
 
+//生成验证码
+$strArr=range("a", "z");
+$strArr=array_flip($strArr);
+$checkArr=array_rand($strArr, 4);
+$numArr=range(0,9);
+$checkArr=array_merge($strArr, $numArr);
+var_dump($checkArr) ;

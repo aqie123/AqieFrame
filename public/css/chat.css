@@ -141,7 +141,7 @@ label.offline { background: url('../img/status.gif') no-repeat 0 -11px; bottom: 
 	width: 360px;
 	overflow: hidden;
 	resize:none;
-	color: #000;
+	color: #fff;
 }
 /*聊天框背景颜色*/
 .chat01{

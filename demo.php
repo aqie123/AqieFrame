@@ -509,3 +509,7 @@ $checkArr=array_rand($strArr, 4);
 $numArr=range(0,9);
 $checkArr=array_merge($strArr, $numArr);
 var_dump($checkArr) ;
+
+// 基本语法
+echo "<hr>";
+echo false+4;

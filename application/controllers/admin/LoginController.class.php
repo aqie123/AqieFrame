@@ -74,5 +74,21 @@ class LoginController extends BaseController
         $_SESSION['captcha'] = $captcha->getCode();
     }
 
+    /**
+     * 后台用户注册
+     */
+    public function registerAction(){
+        // 接口状态码
+        $code = 200;
+        $datas = $_POST;
+        //$datas = trim()
+        // var_dump($datas);die;
+        $adminModel = new AdminModel('admin');
+        if($adminModel->register($datas['username'],$datas['password'])){
+            $this->jump('index.php?p=admin&c=login&a=login','注册成功','3');
+        }else{
+            $this->jump('index.php?p=admin&c=login&a=login','注册失败','3');
+        }
+    }
 
 }

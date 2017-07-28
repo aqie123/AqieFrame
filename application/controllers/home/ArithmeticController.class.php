@@ -489,6 +489,27 @@ class ArithmeticController extends Controller
         return $res;
     }
 
+    /**
+     * 无限极分类
+     * @param $items
+     * @param string $pid
+     * @return array
+     */
+    protected function genTree($items,$pid ="pid") {
+        $map  = [];
+        $tree = [];
+        foreach ($items as &$it){ $map[$it['id']] = &$it; }  //数据的ID名生成新的引用索引树
+        foreach ($items as &$it){
+            $parent = &$map[$it[$pid]];
+            if($parent) {
+                $parent['son'][] = &$it;
+            }else{
+                $tree[] = &$it;
+            }
+        }
+        return $tree;
+    }
+
 
 
 

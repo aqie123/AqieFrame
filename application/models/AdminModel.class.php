@@ -43,4 +43,34 @@ class AdminModel extends Model
         return $data;
     }
 
+
+    /**
+     * 后台用户登录
+     * @param $admin_name
+     * @param $password
+     * @return array
+     * @throws Exception
+     *  select from_unixtime(1494753098,'%Y-%m-%d %H:%i:%s');
+     * date("Y-m-d",time());
+     */
+    public function register($admin_name,$password){
+        $sql = "insert into aq_admin(admin_name,password,add_time) values(:admin_name,:password,:add_time)";
+
+        $add_time = time();
+        //var_dump($add_time);die;
+        $password = md5($password);
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':admin_name',$admin_name);
+        $stmt->bindParam(':password',$password);
+        $stmt->bindParam(':add_time',$add_time);
+        // var_dump($sql);die;
+        if(!$stmt->execute()){
+            throw new Exception('注册失败',ErrorCode::REGISTER_FAIL);
+        }
+        return [
+            'admin_name'=>$admin_name,
+            'add_time' => $add_time
+        ];
+    }
+
 }
